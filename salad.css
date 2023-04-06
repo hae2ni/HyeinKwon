@@ -26,6 +26,8 @@ header {
 .hamburgerwrapper:hover {
   cursor: pointer;
   display: block;
+  height: 100vh;
+  z-index: 10;
 }
 
 .hamburgerwrapper {
@@ -35,8 +37,8 @@ header {
   right: 0;
   width: 15rem;
   background-color: white;
-  height: 100vh;
   padding: 2rem;
+  z-index: 10;
 }
 
 .hamburgerwrapper > h2,
@@ -172,6 +174,7 @@ h3 {
   width: 20px;
   margin-bottom: 15px;
   left: 90px;
+  z-index: 2;
 }
 .minebtn:hover {
   cursor: pointer;
