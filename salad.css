@@ -1,11 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
 
-body {
-  background-color: pink;
-}
-
 header {
+  width: 100%;
   background-color: #cff09e;
   padding: 5px;
   display: flex;
@@ -60,15 +57,14 @@ h4 {
   text-decoration-line: underline;
   text-decoration-color: #fab1ce;
   text-decoration-style: wavy;
-  text-decoration-offset: 0.5rem;
 }
 
 /* navigation */
 
 nav {
-  display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 250px;
+  align-items: center;
   height: 50%;
   border-radius: 3%;
   padding: 20px;
@@ -82,6 +78,7 @@ nav {
   background-color: white;
   padding: 10px;
   border-radius: 10px;
+  width: 200px;
 }
 
 .navbox:hover {
@@ -104,20 +101,20 @@ h3 {
 
 section {
   background-color: #fbffb9;
+  width: 100%;
   display: flex;
 }
 
 cardsection {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 
 .card {
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 250px;
+  width: 230px;
   height: 20em;
   margin: 10px;
   align-items: center;
@@ -177,4 +174,35 @@ h3 {
 .minebtn:hover {
   cursor: pointer;
   filter: opacity(0.5) invert(0.5);
+}
+
+@media screen and (max-width: 1024px) {
+  .cardsection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .cardsection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: px) {
+  .cardsection {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .cardsection {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 20px;
+  }
 }
