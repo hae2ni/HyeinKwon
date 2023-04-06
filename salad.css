@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
+
 body {
   background-color: pink;
 }
@@ -16,14 +19,16 @@ header {
   padding-right: 50px;
 }
 
+/* navigation */
+
 nav {
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 500px;
   height: 50%;
   border-radius: 3%;
-  padding: 10px;
-  margin: 10px;
+  padding: 20px;
+  margin: 30px;
   background-color: #cbe86b;
   box-shadow: 3px 3px 3px 3px gray;
 }
@@ -40,6 +45,18 @@ nav {
   color: white;
 }
 
+.navheader,
+h3 {
+  font-family: "Jua", sans-serif;
+  font-size: 20px;
+}
+
+.navbox {
+  font-family: "Gamja Flower", cursive;
+}
+
+/* section */
+
 section {
   background-color: #fbffb9;
   display: flex;
@@ -55,39 +72,60 @@ cardsection {
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 15%;
+  width: 250px;
   height: 20em;
   margin: 10px;
   align-items: center;
   border-radius: 10%;
   box-shadow: 3px 3px 3px pink;
+  justify-content: space-around;
 }
 
-.card h5 {
+h3 {
+  margin-top: 30px;
+}
+
+.hashtag {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin-bottom: 20px;
+}
+
+.hashtag h5 {
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: clip;
   white-space: nowrap;
   width: 100px;
-  height: 80px;
-  margin-top: -5px;
+  height: 20px;
+  font-size: 12px;
 }
 
-img {
+.hashtag button {
+  width: 10px;
+  margin-left: 10px;
+  background-color: white;
+  border: none;
+  text-shadow: 2px 2px 2px #fab1ce;
+  cursor: pointer;
+}
+
+.card img {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
 
-.stuff {
-  width: 10rem;
-  height: 30rem;
+.card .stuff {
+  width: 200px;
+  height: 150px;
   border-radius: 5%;
-  margin-top: -1rem;
 }
 
-.btn {
+.card .minebtn {
   position: relative;
-  width: 10%;
-  margin-top: 5px;
-  left: 50px;
+  width: 20px;
+  margin-bottom: 15px;
+  left: 90px;
 }
