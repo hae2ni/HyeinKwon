@@ -19,6 +19,50 @@ header {
   padding-right: 50px;
 }
 
+.menubar {
+  display: none;
+  background-color: white;
+}
+
+.hamburger:hover + .hamburgerwrapper,
+.hamburgerwrapper:hover {
+  cursor: pointer;
+  display: block;
+}
+
+.hamburgerwrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 15rem;
+  background-color: white;
+  height: 100vh;
+  padding: 2rem;
+}
+
+.hamburgerwrapper > h2,
+h4 {
+  font-family: "Jua", sans-serif;
+}
+
+.hamburgerwrapper > h2 {
+  font-size: 30px;
+}
+
+.hamburgerwrapper > h4 {
+  font-size: 20px;
+}
+
+.hamburgerwrapper > h4:hover {
+  color: #fab1ce;
+  cursor: pointer;
+  text-decoration-line: underline;
+  text-decoration-color: #fab1ce;
+  text-decoration-style: wavy;
+  text-decoration-offset: 0.5rem;
+}
+
 /* navigation */
 
 nav {
@@ -41,6 +85,7 @@ nav {
 }
 
 .navbox:hover {
+  cursor: pointer;
   background-color: #fab1ce;
   color: white;
 }
@@ -128,4 +173,8 @@ h3 {
   width: 20px;
   margin-bottom: 15px;
   left: 90px;
+}
+.minebtn:hover {
+  cursor: pointer;
+  filter: opacity(0.5) invert(0.5);
 }
