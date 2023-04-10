@@ -78,6 +78,7 @@ html {
   display: flex;
   justify-content: center;
   background-color: white;
+  height: 680px;
 }
 
 header {
@@ -93,7 +94,7 @@ body {
   background-color: #ffe5ec;
   width: 330px;
   height: 680px;
-  padding: 2rem;
+  padding: 20px;
   flex-direction: column;
   align-items: center;
 }
@@ -110,7 +111,7 @@ body {
   box-shadow: 3px 5px 5px #ee7785;
   place-items: center;
   border-radius: 5%;
-  padding: 1rem;
+  padding: 20px;
   margin-bottom: 5px;
   font-family: "KCC-Ganpan";
 }
@@ -145,10 +146,9 @@ body {
 
 /* 할 일 목록들 */
 .whattodo {
-  display: grid;
-  grid-template-columns: repeat(2, 2fr);
-  flex-wrap: wrap;
+  display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 300px;
   height: auto;
   padding: 1rem;
@@ -170,24 +170,25 @@ body {
   text-shadow: 1px 1px 1px white;
 }
 
-.todowrapper > span::before {
+.todo_wrapper > span::before {
   content: "❤️ ";
 }
 
-#weight {
+#done {
   color: gray;
 }
 
-#weight::before {
+#done::before {
   content: "🤍";
 }
 
-.todowrapper {
+.todo_wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+
   font-family: "GangwonEdu_OTFBoldA";
   margin: 10px;
+  width: 100px;
   padding: 0.5rem;
 }
 
@@ -212,14 +213,16 @@ footer {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+
   position: fixed;
-  top: 600px;
+  bottom: 230px;
 }
 
-.cal {
+.footer_btn {
   display: flex;
   justify-content: center;
   align-items: center;
+
   border-radius: 20%;
   width: 80px;
   height: 80px;
