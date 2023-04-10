@@ -150,10 +150,12 @@ section {
 .card {
   display: flex;
   flex-direction: column;
+
   background-color: white;
   width: 230px;
-  height: 20em;
+  height: 330px;
   margin: 10px;
+
   align-items: center;
   border-radius: 10%;
   box-shadow: 3px 3px 3px pink;
