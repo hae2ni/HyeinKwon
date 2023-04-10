@@ -30,7 +30,7 @@ html {
   height: 680px;
 }
 
-header {
+header h1 {
   font-family: "TTTtangsbudaejjigaeB";
   font-size: 25px;
   color: white;
@@ -119,15 +119,15 @@ body {
   text-shadow: 1px 1px 1px white;
 }
 
-.todo_wrapper > span::before {
+.not_done::before {
   content: "❤️ ";
 }
 
-#done {
+.done {
   color: gray;
 }
 
-#done::before {
+.done::before {
   content: "🤍";
 }
 
