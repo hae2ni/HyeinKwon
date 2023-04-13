@@ -9,7 +9,7 @@ function clickAll() {
 
 //샐러드버튼
 const ClickedSalad = document.getElementById("salad");
-
+ㅊ;
 function clickSalad() {
   ClickedSalad.classList.toggle(hiddenClass);
 }
@@ -26,9 +26,4 @@ const ClickedSide = document.getElementById("side");
 
 function clickSide() {
   ClickedSide.classList.toggle(hiddenClass);
-}
-
-//삭제버튼
-function deleteNav() {
-  console.log("here");
 }
