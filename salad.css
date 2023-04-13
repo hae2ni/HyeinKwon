@@ -170,7 +170,11 @@ h4 {
   font-size: 16px;
 }
 
-/* main */
+.hidden {
+  visibility: hidden;
+}
+
+/* main & section */
 
 main {
   background-color: #fbffb9;
@@ -182,6 +186,13 @@ main {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
+
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* card */
 
 .card {
   display: flex;

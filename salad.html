@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Salad</title>
     <link rel="stylesheet" href="./salad.css" />
-    <script src="event.js"></script>
+    <script src="data.js"></script>
   </head>
 
   <body>
@@ -24,32 +24,32 @@
       <nav class="navwrapper">
         <h3 class="navheader">종류</h3>
         <ul class="nav_wrapper">
-          <li class="navbox">❤️전체❤️</li>
-          <li class="navbox">🧡샌드위치🧡</li>
-          <li class="navbox">💛샐러드💛</li>
-          <li class="navbox">💚사이드💚</li>
+          <li class="navbox" onclick="clickAll()">❤️전체❤️</li>
+          <li class="navbox" onclick="clickSalad()">🧡샐러드🧡</li>
+          <li class="navbox" onclick="clickSandwich()">💛샌드위치💛</li>
+          <li class="navbox" onclick="clickSide()">💚사이드💚</li>
         </ul>
       </nav>
       <section>
         <article class="nav_click">
-          <div class="nav_click_wrapper">
+          <div class="nav_click_wrapper hidden" id="all">
             <h3>❤️전체❤️</h3>
-            <button>X</button>
+            <button onclick="clickAll()">X</button>
           </div>
 
-          <div class="nav_click_wrapper">
-            <h3>🧡샌드위치🧡</h3>
-            <button>X</button>
+          <div class="nav_click_wrapper hidden" id="salad">
+            <h3>🧡샐러드🧡</h3>
+            <button onclick="clickSalad()">X</button>
           </div>
 
-          <div class="nav_click_wrapper">
-            <h3>💛샐러드💛</h3>
-            <button>X</button>
+          <div class="nav_click_wrapper hidden" id="sandwich">
+            <h3>💛샌드위치💛</h3>
+            <button onclick="clickSandwich()">X</button>
           </div>
 
-          <div class="nav_click_wrapper">
+          <div class="nav_click_wrapper hidden" id="side">
             <h3>💚사이드💚</h3>
-            <button>X</button>
+            <button onclick="clickSide()">X</button>
           </div>
         </article>
 
@@ -254,4 +254,5 @@
       </section>
     </main>
   </body>
+  <script src="event.js"></script>
 </html>
