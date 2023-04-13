@@ -134,6 +134,42 @@ h4 {
   font-family: "Gamja Flower", cursive;
 }
 
+/* navigation click */
+.nav_click {
+  display: flex;
+  height: 60px;
+
+  font-family: "GangwonEduSaeeum_OTFMediumA";
+  font-size: 16px;
+}
+
+.nav_click_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin: 10px;
+
+  border-radius: 8%;
+
+  background-color: #cbe86b;
+  box-shadow: 3px 3px 4px #fab1ce;
+}
+
+.nav_click_wrapper > button {
+  border: none;
+  background-color: #fbffb9;
+  border-radius: 50%;
+
+  box-shadow: 2px 2px 2px #fab1ce;
+  margin: 5px;
+  font-family: "Gamja Flower", cursive;
+  font-size: 16px;
+}
+
 /* main */
 
 main {
@@ -142,7 +178,7 @@ main {
   padding-top: 120px;
 }
 
-section {
+.card_section {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 }
