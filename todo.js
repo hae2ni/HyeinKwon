@@ -17,6 +17,9 @@ const toDos = [
   },
 ];
 
+// 할 일 리스트 보여주기
+const DONE_CLASSNAME = "done";
+
 for (i = 0; i < toDos.length; i++) {
   const section = document.querySelector(".whattodo");
 
@@ -34,6 +37,23 @@ for (i = 0; i < toDos.length; i++) {
     const span = document.createElement("span");
     article.appendChild(span);
 
+    span.className += "not_done";
     span.innerText = toDos[i].todos[j];
+
+    span.addEventListener("click", function () {
+      span.classList.toggle(DONE_CLASSNAME);
+      console.log("here");
+    });
   }
 }
+
+// 할 일 갯수를 세서 보여주기
+const leftTodo = document.querySelector(".todoing");
+var count = 0;
+for (i = 0; i < toDos.length; i++) {
+  for (j = 0; j < toDos[i].todos.length; j++) {
+    count++;
+    console.log(count);
+  }
+}
+leftTodo.innerText = count;
