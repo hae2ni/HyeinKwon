@@ -62,6 +62,9 @@ const data = [
   },
 ];
 
+// 카테고리 체크
+
+// 각 상위 카테고리
 const hiddenClass = "hidden";
 
 // 전체버튼
@@ -73,7 +76,7 @@ function clickAll() {
 
 //샐러드버튼
 const ClickedSalad = document.getElementById("salad");
-ㅊ;
+
 function clickSalad() {
   ClickedSalad.classList.toggle(hiddenClass);
 }
@@ -90,4 +93,21 @@ const ClickedSide = document.getElementById("side");
 
 function clickSide() {
   ClickedSide.classList.toggle(hiddenClass);
+}
+
+function showData() {
+  const card = document.querySelector(".card");
+  const div = document.querySelector(".hashtag_wrapper");
+  const ul = document.querySelector(".hashtag");
+
+  const itemName = document.createElement("h3");
+  const hashtagItem = document.createElement("li");
+
+  const hashtagBtn = document.createElement("button");
+  hashtagBtn.innerText = "+";
+
+  card.appendChild(itemName);
+  ul.appendChild(hashtagItem);
+
+  div.appendChild(hashtagBtn);
 }
