@@ -128,7 +128,7 @@ body {
 }
 
 .done::before {
-  content: "🤍";
+  content: "🤍 ";
 }
 
 .todo_wrapper {
@@ -138,7 +138,7 @@ body {
   font-family: "GangwonEdu_OTFBoldA";
   margin: 10px;
   width: 100px;
-  padding: 0.5rem;
+  padding: 5px;
 }
 
 #sopt {
