@@ -14,27 +14,45 @@
       <h1>🥗HAE2NI'S SALAD🥗</h1>
 
       <img class="hamburger" src="./assets/menubtn.png" alt="햄버거버튼" />
+
       <aside class="hamburgerwrapper">
         <h2 id="hamburger">메뉴</h2>
         <h4>새 상품 추가</h4>
         <h4>찜 목록</h4>
       </aside>
     </header>
+
     <main>
       <nav class="navwrapper">
         <h3 class="navheader">종류</h3>
         <ul class="nav_wrapper">
-          <li class="navbox" onclick="clickAll()">
-            <input type="checkbox" />❤️전체❤️
+          <li class="navbox" id="navAll">
+            <input
+              type="checkbox"
+              id="allCheck"
+              onchange="isChecked(this)"
+            />❤️전체❤️
           </li>
-          <li class="navbox" onclick="clickSalad()">
-            <input type="checkbox" />🧡샐러드🧡
+          <li class="navbox" >
+            <input
+              type="checkbox"
+              id="saladCheck"
+              onchange="isChecked(this)"
+            />🧡샐러드🧡
           </li>
-          <li class="navbox" onclick="clickSandwich()">
-            <input type="checkbox" />💛샌드위치💛
+          <li class="navbox" ">
+            <input
+              type="checkbox"
+              id="sandwichCheck"
+              onchange="isChecked(this)"
+            />💛샌드위치💛
           </li>
-          <li class="navbox" onclick="clickSide()">
-            <input type="checkbox" />💚사이드💚
+          <li class="navbox" >
+            <input
+              type="checkbox"
+              id="sideCheck"
+              onchange="isChecked(this)"
+            />💚사이드💚
           </li>
         </ul>
       </nav>
