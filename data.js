@@ -31,14 +31,8 @@ const style = [
   "#fbfaff",
   "#ebd9fc",
 ];
-//init 함수->넣기 태그->불러와서 이벤트 부착(함수화)
-//함수 리스트업-> 하나씩 붙여넣기,,,,
-//localstorage 저장xxxxxxx
-const DONE_CLASSNAME = "done";
 
-const here = () => {
-  console.log("here");
-};
+const DONE_CLASSNAME = "done";
 
 function initToDO() {
   const section = document.querySelector(".whattodo");
@@ -62,38 +56,43 @@ function initToDO() {
       span.innerHTML = `
     ${data.todo}`;
       span.classList.add("not_done");
+      innerHeart();
       span.addEventListener("click", function () {
-        span.classList.contains(DONE_CLASSNAME);
+        span.classList.toggle(DONE_CLASSNAME);
+        notDoneNum();
       });
     });
   });
 }
 
-//하트 안에 있는 숫자 구현
-function innerHeart() {
-  const heartNumber = document.querySelector(".todoing");
-  const leftTodo = document.getElementsByClassName("not_done");
+//미완료 할 일 갯수 세는 함수
+function notDoneNum() {
+  const leftTodo = document.getElementsByClassName("not_done"); //안 끝낸 것
   let leftTodoList = Array.from(leftTodo);
+  const heart = document.querySelector(".todoing");
 
-  //   if (leftTodoList.classList.contains(DONE_CLASSNAME)) {
-  //     leftTodoList.pop();
-  //   }
-  heartNumber.innerText = leftTodoList.length;
-  //   var count = 0;
-  //   for (i = 0; i < toDos.length; i++) {
-  //     for (j = 0; j < toDos[i].todos.length; j++) {
-  //       // if (toDos[i].todos[j].done === true) count++;
-  //       if (l) {
-  //         console.log(here);
-  //       }
-  //     }
-  //   }
+  let count = [];
 
-  console.log(leftTodoList);
-
-  //   heartNumber.innerText = count;
+  //끝난 부분 계산
+  leftTodoList.forEach((spanData) => {
+    if (spanData.classList.contains(DONE_CLASSNAME)) {
+      count.push(spanData);
+    }
+  });
+  heart.innerText = leftTodoList.length - count.length;
 }
 
+//하트 안에 있는 숫자 구현
+function innerHeart() {
+  const leftTodo = document.getElementsByClassName("not_done"); //안 끝낸 것
+  let leftTodoList = Array.from(leftTodo);
+  const heart = document.querySelector(".todoing");
+
+  console.log(leftTodoList);
+  heart.innerText = leftTodoList.length;
+}
+
+//모달
 const modal = document.querySelector(".modal");
 const addBtn = modal.querySelector(".addBtn");
 
@@ -104,8 +103,6 @@ function addToDo() {
 addBtn.addEventListener("click", addToDo);
 
 initToDO();
-innerHeart();
-
 //해결 못한 것: 하트 안에 숫자 줄이기,,늘리기,,,
 //추가 클릭하고 이거 어케 보여주죠,,아 대충 생각났따,,
 //페이지 이동만들기이 그러면 기본 끝나 히히
