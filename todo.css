@@ -48,6 +48,13 @@ body {
   align-items: center;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* 캘린더 */
 
 #calendar {
@@ -202,14 +209,18 @@ footer {
   display: flex;
   flex-direction: column;
 
+  position: fixed;
+  width: 100%;
   align-items: center;
   width: 200px;
+
+  border-radius: 10%;
   background-color: #ee9ca7;
 }
 
 .addInput {
   border: none;
-  border-radius: 10%;
+  border-radius: 5%;
   margin: 10px;
 }
 
