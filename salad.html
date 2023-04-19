@@ -29,28 +29,28 @@
           <li class="navbox" id="navAll">
             <input
               type="checkbox"
-              id="allCheck"
+              id="all"
               onchange="isChecked(this)"
             />❤️전체❤️
           </li>
-          <li class="navbox" >
+          <li class="navbox">
             <input
               type="checkbox"
-              id="saladCheck"
+              id="salad"
               onchange="isChecked(this)"
             />🧡샐러드🧡
           </li>
-          <li class="navbox" ">
+          <li class="navbox">
             <input
               type="checkbox"
-              id="sandwichCheck"
+              id="sandwich"
               onchange="isChecked(this)"
             />💛샌드위치💛
           </li>
-          <li class="navbox" >
+          <li class="navbox">
             <input
               type="checkbox"
-              id="sideCheck"
+              id="side"
               onchange="isChecked(this)"
             />💚사이드💚
           </li>
@@ -58,24 +58,24 @@
       </nav>
       <section>
         <article class="nav_click">
-          <div class="nav_click_wrapper hidden" id="all">
+          <div class="nav_click_wrapper hidden all">
             <h3>❤️전체❤️</h3>
-            <button onclick="clickAll()">X</button>
+            <button>X</button>
           </div>
 
-          <div class="nav_click_wrapper hidden" id="salad">
+          <div class="nav_click_wrapper hidden salad">
             <h3>🧡샐러드🧡</h3>
-            <button onclick="clickSalad()">X</button>
+            <button>X</button>
           </div>
 
-          <div class="nav_click_wrapper hidden" id="sandwich">
+          <div class="nav_click_wrapper hidden sandwich">
             <h3>💛샌드위치💛</h3>
-            <button onclick="clickSandwich()">X</button>
+            <button>X</button>
           </div>
 
-          <div class="nav_click_wrapper hidden" id="side">
+          <div class="nav_click_wrapper hidden side">
             <h3>💚사이드💚</h3>
-            <button onclick="clickSide()">X</button>
+            <button id="btn">X</button>
           </div>
         </article>
 

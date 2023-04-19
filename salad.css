@@ -273,7 +273,6 @@ h3 {
   width: 20px;
   margin-bottom: 15px;
   left: 90px;
-  z-index: 2;
 }
 .minebtn:hover {
   cursor: pointer;
