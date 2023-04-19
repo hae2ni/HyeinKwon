@@ -180,7 +180,21 @@ function makeCard(filterdId) {
 
     const hashtagMore = document.createElement("button");
     hashtagMore.innerText = "+";
+    hashtagMore.classList.add("hashtag_btn");
     hashtagWrapper.appendChild(hashtagMore);
+
+    //태그 모달
+    const modal = document.createElement("div");
+    modal.classList.add("modal");
+    modal.innerText = `${data.hashtags}`;
+    const modalWrapper = document.createElement("div");
+    cardArticle.appendChild(modalWrapper);
+
+    function modalOpener() {
+      modalWrapper.appendChild(modal);
+      modalWrapper.classList.toggle(hiddenClass);
+    }
+    hashtagMore.addEventListener("click", modalOpener);
 
     const menuImg = document.createElement("img");
     menuImg.classList.add("stuff");
@@ -189,7 +203,6 @@ function makeCard(filterdId) {
     cardArticle.appendChild(menuImg);
 
     const mineBtn = document.createElement("img");
-    const heartbtn = "./assets/heartbtn.png";
     mineBtn.src = "./assets/heartbtn.png";
     mineBtn.alt = "찜버튼";
     mineBtn.classList.add("minebtn");
