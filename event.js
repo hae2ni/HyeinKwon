@@ -72,117 +72,136 @@ const myMenus = [
     img: "./assets/sideyogart.jpg",
   },
 ];
-const heartbtn = "./assets/heartbtn.png";
 const hiddenClass = "hidden";
 
-//데이터를 카테고리별로 나누기
-let salad = [];
-let sandwich = [];
-let side = [];
-
-function whatCategory() {
-  myMenus.forEach((menu) => {
-    if (menu.category === "salad") {
-      salad.push(menu);
-    } else if (menu.category === "sandwich") {
-      sandwich.push(menu);
-    } else {
-      side.push(menu);
-    }
-  });
+// 데이터를 카테고리별로 나누기
+function filterCategory(filterdId) {
+  switch (filterdId) {
+    case "all":
+      return myMenus;
+    case "salad":
+      return myMenus.filter((menu) => menu.category === "salad");
+    case "sandwich":
+      return myMenus.filter((menu) => menu.category === "sandwich");
+    case "side":
+      return myMenus.filter((menu) => menu.category === "side");
+  }
 }
-whatCategory();
 
-//버튼이 체크되어있는지 확인
+// 버튼이 체크되어있는지 확인
 function isChecked(checkbox) {
   const is_checked = checkbox.checked;
   if (is_checked === true) {
-    selectedCategory(checkbox);
-    //카드 보여주기
+    showCategory(checkbox);
+    makeCard(checkbox.id);
   } else {
     discardCategory(checkbox);
-    //카드 안 보여주기
+    hiddenCard(checkbox.id);
   }
 }
 
-//상위 카테고리 선택된 부분 보여주기
-const selectedAll = document.getElementById("all");
-const selectedSalad = document.getElementById("salad");
-const selectedSandwich = document.getElementById("sandwich");
-const selectedSide = document.getElementById("side");
+// 상위 카테고리 선택된 부분 보여주기
+const all = document.querySelector(".all");
+const salad = document.querySelector(".salad");
+const sandwich = document.querySelector(".sandwich");
+const side = document.querySelector(".side");
 
-//체크박스 체크하면 선택된 카테고리 표시
-function selectedCategory(checkbox) {
-  if (checkbox.id === "allCheck") {
-    selectedAll.classList.remove(hiddenClass);
-  } else if (checkbox.id === "saladCheck") {
-    selectedSalad.classList.remove(hiddenClass);
-  } else if (checkbox.id === "sandwichCheck") {
-    selectedSandwich.classList.remove(hiddenClass);
-  } else {
-    selectedSide.classList.remove(hiddenClass);
+// 체크박스 체크하면 선택된 카테고리 표시
+function showCategory(checkbox) {
+  switch (checkbox.id) {
+    case "all":
+      all.classList.remove(hiddenClass);
+      break;
+    case "salad":
+      salad.classList.remove(hiddenClass);
+      break;
+    case "sandwich":
+      sandwich.classList.remove(hiddenClass);
+      break;
+    case "side":
+      side.classList.remove(hiddenClass);
+      break;
   }
 }
 
-//체크박스 해제하면 선택된 카테고리 삭제
+//체크박스 해제하면 선택된 상위 카테고리 삭제
 function discardCategory(checkbox) {
-  if (checkbox.id === "allCheck") {
-    selectedAll.classList.add(hiddenClass);
-  } else if (checkbox.id === "saladCheck") {
-    selectedSalad.classList.add(hiddenClass);
-  } else if (checkbox.id === "sandwichCheck") {
-    selectedSandwich.classList.add(hiddenClass);
-  } else {
-    selectedSide.classList.add(hiddenClass);
+  switch (checkbox.id) {
+    case "all":
+      all.classList.add(hiddenClass);
+      break;
+    case "salad":
+      salad.classList.add(hiddenClass);
+      break;
+    case "sandwich":
+      sandwich.classList.add(hiddenClass);
+      break;
+    case "side":
+      side.classList.add(hiddenClass);
+      break;
   }
 }
+
+const button = document.getElementById("btn");
+//X버튼 누르면 상위 카테고리 사라짐
+button.addEventListener("click", function (event) {
+  event.target.parentElement.classList.add(hiddenClass);
+});
 
 //카드 만들기
 const cardSection = document.querySelector(".card_section");
-function makeCard() {
-  const cardArticle = document.createElement("article");
-  cardArticle.className = "card";
-}
 
-//해시태그 자르기
+function makeCard(filterdId) {
+  const filteredData = filterCategory(filterdId);
+  filteredData.map((data) => {
+    const cardArticle = document.createElement("article");
+    cardArticle.classList.add("card");
+    cardSection.appendChild(cardArticle);
 
-//메뉴 전체 보여주는 함수
-function showCard() {
-  myMenus.map((menu) => {
-    const menuName = document.createElement("h3");
+    cardArticle.innerHTML = `
+    <h3>${data.name}</h3>
+    `;
+
     const hashtagWrapper = document.createElement("div");
     hashtagWrapper.className = "hashtag_wrapper";
     const hashtagContainer = document.createElement("ul");
     hashtagContainer.className = "hashtag";
 
-    cardSection.appendChild(cardArticle);
-    cardArticle.appendChild(menuName);
     cardArticle.appendChild(hashtagWrapper);
     hashtagWrapper.appendChild(hashtagContainer);
 
-    menuName.innerText = menu.name;
-    console.log(menu);
+    data.hashtags.forEach((tag) => {
+      const hashtag = document.createElement("li");
+      hashtag.className = "hashtag_item";
 
-    menu.hashtags.forEach((hashtag) => {
-      const hashtagItem = document.createElement("li");
-      hashtagItem.className = "hashtag_item";
-      hashtagContainer.appendChild(hashtagItem);
-
-      hashtagItem.innerText = hashtag;
+      hashtagContainer.appendChild(hashtag);
+      hashtag.innerText = tag;
     });
 
+    const hashtagMore = document.createElement("button");
+    hashtagMore.innerText = "+";
+    hashtagWrapper.appendChild(hashtagMore);
+
     const menuImg = document.createElement("img");
-    menuImg.className = "stuff";
+    menuImg.classList.add("stuff");
+    menuImg.src = data.img;
+    menuImg.alt = data.name;
     cardArticle.appendChild(menuImg);
-    menuImg.src = menu.img;
-    menuImg.alt = menu.name;
 
-    const heartImg = document.createElement("img");
-    heartImg.className = "minebtn";
-    cardArticle.appendChild(heartImg);
-    heartImg.src = heartbtn;
-    heartImg.alt = "찜";
+    const mineBtn = document.createElement("img");
+    const heartbtn = "./assets/heartbtn.png";
+    mineBtn.src = "./assets/heartbtn.png";
+    mineBtn.alt = "찜버튼";
+    mineBtn.classList.add("minebtn");
+    cardArticle.appendChild(mineBtn);
 
-    return cardArticle;
+    cardArticle.classList.remove(hiddenClass);
   });
+}
+
+//카드 없애기
+function hiddenCard(filterdId) {
+  const filteredData = filterCategory(filterdId);
+
+  cardSection.classList.add(hiddenClass);
 }
