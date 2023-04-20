@@ -145,12 +145,18 @@ function discardCategory(checkbox) {
 //상단 태그에서 엑스버튼 눌렀을 때 카드 사라자기
 function xbtnhiddenCard(filterdId) {
   const hiddenBtn = filterdId.parentElement;
-  const hiddenBtnClass = filterdId.className;
-  const checkbox = document.getElementById(hiddenBtnClass);
-  `$("checkbox").prop("checked", false)`;
+  handleCheckbox(filterdId.className);
 
   hiddenBtn.classList.add(hiddenClass);
   hiddenCard(filterdId);
+}
+
+//상단 태그에서 엑스버튼 눌렀을 때 체크박스의 체크 사라지기
+function handleCheckbox(checkId) {
+  const checkbox = document.getElementById(`${checkId}`);
+  if (checkbox.checked === true) {
+    checkbox.checked = false;
+  }
 }
 
 //카드 만들기
