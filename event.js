@@ -93,7 +93,7 @@ function isChecked(checkbox) {
   const is_checked = checkbox.checked;
   if (is_checked === true) {
     showCategory(checkbox);
-    makeCard(checkbox.id);
+    showCard(checkbox.id);
   } else {
     discardCategory(checkbox);
     hiddenCard(checkbox.id);
@@ -149,72 +149,77 @@ button.addEventListener("click", function (event) {
 });
 
 //카드 만들기
-const cardSection = document.querySelector(".card_section");
+function makeCard(data) {
+  const cardArticle = document.createElement("article");
+  cardArticle.classList.add("card");
+  cardArticle.classList.add(data.category);
 
-function makeCard(filterdId) {
-  const filteredData = filterCategory(filterdId);
-  filteredData.map((data) => {
-    const cardArticle = document.createElement("article");
-    cardArticle.classList.add("card");
-    cardSection.appendChild(cardArticle);
-
-    cardArticle.innerHTML = `
+  cardArticle.innerHTML = `
     <h3>${data.name}</h3>
     `;
 
-    const hashtagWrapper = document.createElement("div");
-    hashtagWrapper.className = "hashtag_wrapper";
-    const hashtagContainer = document.createElement("ul");
-    hashtagContainer.className = "hashtag";
+  const hashtagWrapper = document.createElement("div");
+  hashtagWrapper.className = "hashtag_wrapper";
+  const hashtagContainer = document.createElement("ul");
+  hashtagContainer.className = "hashtag";
 
-    cardArticle.appendChild(hashtagWrapper);
-    hashtagWrapper.appendChild(hashtagContainer);
+  cardArticle.appendChild(hashtagWrapper);
+  hashtagWrapper.appendChild(hashtagContainer);
 
-    data.hashtags.forEach((tag) => {
-      const hashtag = document.createElement("li");
-      hashtag.className = "hashtag_item";
+  data.hashtags.forEach((tag) => {
+    const hashtag = document.createElement("li");
+    hashtag.className = "hashtag_item";
 
-      hashtagContainer.appendChild(hashtag);
-      hashtag.innerText = tag;
-    });
+    hashtagContainer.appendChild(hashtag);
+    hashtag.innerText = tag;
+  });
 
-    const hashtagMore = document.createElement("button");
-    hashtagMore.innerText = "+";
-    hashtagMore.classList.add("hashtag_btn");
-    hashtagWrapper.appendChild(hashtagMore);
+  const hashtagMore = document.createElement("button");
+  hashtagMore.innerText = "+";
+  hashtagMore.classList.add("hashtag_btn");
+  hashtagWrapper.appendChild(hashtagMore);
 
-    //태그 모달
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
-    modal.innerText = `${data.hashtags}`;
-    const modalWrapper = document.createElement("div");
-    cardArticle.appendChild(modalWrapper);
+  //태그 모달
+  const modal = document.createElement("div");
+  modal.classList.add("modal");
+  modal.innerText = `${data.hashtags}`;
+  const modalWrapper = document.createElement("div");
+  cardArticle.appendChild(modalWrapper);
 
-    function modalOpener() {
-      modalWrapper.appendChild(modal);
-      modalWrapper.classList.toggle(hiddenClass);
-    }
-    hashtagMore.addEventListener("click", modalOpener);
+  function modalOpener() {
+    modalWrapper.appendChild(modal);
+    modalWrapper.classList.toggle(hiddenClass);
+  }
+  hashtagMore.addEventListener("click", modalOpener);
 
-    const menuImg = document.createElement("img");
-    menuImg.classList.add("stuff");
-    menuImg.src = data.img;
-    menuImg.alt = data.name;
-    cardArticle.appendChild(menuImg);
+  const menuImg = document.createElement("img");
+  menuImg.classList.add("stuff");
+  menuImg.src = data.img;
+  menuImg.alt = data.name;
+  cardArticle.appendChild(menuImg);
 
-    const mineBtn = document.createElement("img");
-    mineBtn.src = "./assets/heartbtn.png";
-    mineBtn.alt = "찜버튼";
-    mineBtn.classList.add("minebtn");
-    cardArticle.appendChild(mineBtn);
+  const mineBtn = document.createElement("img");
+  mineBtn.src = "./assets/heartbtn.png";
+  mineBtn.alt = "찜버튼";
+  mineBtn.classList.add("minebtn");
+  cardArticle.appendChild(mineBtn);
+  return cardArticle;
+}
 
-    cardArticle.classList.remove(hiddenClass);
+function showCard(filterdId) {
+  const filteredData = filterCategory(filterdId);
+  const cardSection = document.querySelector(".card_section");
+
+  filteredData.map((data) => {
+    let cards = makeCard(data);
+    console.log(cards);
+    cardSection.appendChild(cards);
   });
 }
 
 //카드 없애기
 function hiddenCard(filterdId) {
-  const filteredData = filterCategory(filterdId);
+  const cardArticle = document.querySelectorAll(".card");
 
-  cardSection.classList.add(hiddenClass);
+  console.log(cardArticle);
 }
