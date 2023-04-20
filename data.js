@@ -1,4 +1,4 @@
-import { toDos } from "./todo.js";
+import TODOs from "./todo.js";
 
 const DONE_CLASSNAME = "done";
 let clickCategoryId;
@@ -7,7 +7,7 @@ function initToDO() {
   const section = document.querySelector(".whattodo");
 
   //   할 일 카테고리 보이기
-  toDos.map((data) => {
+  TODOs.map((data) => {
     const article = document.createElement("article");
     article.className = "todo_wrapper";
     section.appendChild(article);
