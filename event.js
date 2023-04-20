@@ -163,6 +163,7 @@ function handleCheckbox(checkId) {
 function makeCard(data) {
   const cardArticle = document.createElement("article");
   cardArticle.classList.add("card");
+  cardArticle.classList.add("slideUp");
   cardArticle.classList.add(data.category);
 
   cardArticle.innerHTML = `
