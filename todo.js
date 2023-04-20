@@ -1,4 +1,4 @@
-export const toDos = [
+const TODOs = [
   {
     category: "할 일!",
     todos: [
@@ -22,3 +22,5 @@ export const toDos = [
     todos: [{ todo: "인강", done: false }],
   },
 ];
+
+export default TODOs;
