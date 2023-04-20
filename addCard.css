@@ -78,3 +78,8 @@ img {
   width: 100px;
   height: 150px;
 }
+
+.category {
+  padding: 5px;
+  margin: 20px;
+}
