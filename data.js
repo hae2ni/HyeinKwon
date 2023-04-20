@@ -20,9 +20,7 @@ function initToDO() {
 
     div.addEventListener("click", function (event) {
       clickCategoryId = event.target.id;
-      // console.log(evednt.target.id);
       openModal();
-      // const clickCategory = d
     });
 
     // 할 일 리스트 보이기
@@ -82,18 +80,16 @@ function openModal() {
   modal.classList.remove("hidden");
   const newToDo = modal.querySelector(".addInput");
   newToDo.focus();
+  newToDo.value = null;
 }
 
 function closeModal() {
   modal.classList.add("hidden");
 }
 
+//Todo 추가
 function addToDo() {
-  console.log(clickCategoryId);
-
   const newToDo = modal.querySelector(".addInput").value;
-  modal.querySelector(".addInput").innerText = newToDo;
-  console.log(newToDo);
   const clickArticle = document.querySelector(`#${clickCategoryId}`).parentNode;
 
   const span = document.createElement("span");
