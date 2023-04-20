@@ -59,7 +59,7 @@ aside .hamburger {
 
 .hamburgerwrapper > h2,
 h4,
-h3 {
+h3 a {
   font-family: "Jua", sans-serif;
 }
 
@@ -77,6 +77,11 @@ h3 {
   text-decoration-line: underline;
   text-decoration-color: #fab1ce;
   text-decoration-style: wavy;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* navigation */
