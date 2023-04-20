@@ -27,61 +27,41 @@
         <h3 class="navheader">종류</h3>
         <ul class="nav_wrapper">
           <li class="navbox" id="navAll">
-            <input
-              type="checkbox"
-              id="all"
-              onchange="isChecked(this)"
-            />❤️전체❤️
+            <input type="checkbox" id="all" />❤️전체❤️
           </li>
+          <li class="navbox"><input type="checkbox" id="salad" />🧡샐러드🧡</li>
           <li class="navbox">
-            <input
-              type="checkbox"
-              id="salad"
-              onchange="isChecked(this)"
-            />🧡샐러드🧡
+            <input type="checkbox" id="sandwich" />💛샌드위치💛
           </li>
-          <li class="navbox">
-            <input
-              type="checkbox"
-              id="sandwich"
-              onchange="isChecked(this)"
-            />💛샌드위치💛
-          </li>
-          <li class="navbox">
-            <input
-              type="checkbox"
-              id="side"
-              onchange="isChecked(this)"
-            />💚사이드💚
-          </li>
+          <li class="navbox"><input type="checkbox" id="side" />💚사이드💚</li>
         </ul>
       </nav>
       <section>
         <article class="nav_click">
           <div class="nav_click_wrapper hidden all">
             <h3>❤️전체❤️</h3>
-            <button class="all" onclick="xbtnhiddenCard(this)">X</button>
+            <button id="allBtn" class="all">X</button>
           </div>
 
           <div class="nav_click_wrapper hidden salad">
             <h3>🧡샐러드🧡</h3>
-            <button class="salad" onclick="xbtnhiddenCard(this)">X</button>
+            <button id="saladBtn" class="salad" >X</button>
           </div>
 
           <div class="nav_click_wrapper hidden sandwich">
             <h3>💛샌드위치💛</h3>
-            <button class="sandwich" onclick="xbtnhiddenCard(this)">X</button>
+            <button id="sandwichBtn" class="sandwich" ">X</button>
           </div>
 
           <div class="nav_click_wrapper hidden side">
             <h3>💚사이드💚</h3>
-            <button class="side" onclick="xbtnhiddenCard(this)">X</button>
+            <button id="sideBtn" class="side">X</button>
           </div>
         </article>
 
         <section class="card_section"></section>
       </section>
     </main>
+    <script type="module" src="./event.js"></script>
   </body>
-  <script src="event.js"></script>
 </html>
