@@ -212,7 +212,7 @@ function showCard(filterdId) {
 
   filteredData.map((data) => {
     let cards = makeCard(data);
-    console.log(cards);
+    // console.log(cards);
     cardSection.appendChild(cards);
   });
 }
@@ -222,4 +222,13 @@ function hiddenCard(filterdId) {
   const cardArticle = document.querySelectorAll(".card");
 
   console.log(cardArticle);
+  console.log("here");
+
+  cardArticle.forEach((data) => {
+    if (data.classList.contains(filterdId)) {
+      data.remove();
+    } else if (!data.classList.contains(filterdId)) {
+      data.remove();
+    }
+  });
 }
