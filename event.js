@@ -142,11 +142,16 @@ function discardCategory(checkbox) {
   }
 }
 
-const button = document.getElementById("btn");
-//X버튼 누르면 상위 카테고리 사라짐
-button.addEventListener("click", function (event) {
-  event.target.parentElement.classList.add(hiddenClass);
-});
+//상단 태그에서 엑스버튼 눌렀을 때 카드 사라자기
+function xbtnhiddenCard(filterdId) {
+  const hiddenBtn = filterdId.parentElement;
+  const hiddenBtnClass = filterdId.className;
+  const checkbox = document.getElementById(hiddenBtnClass);
+  `$("checkbox").prop("checked", false)`;
+
+  hiddenBtn.classList.add(hiddenClass);
+  hiddenCard(filterdId);
+}
 
 //카드 만들기
 function makeCard(data) {
@@ -220,9 +225,6 @@ function showCard(filterdId) {
 //카드 없애기
 function hiddenCard(filterdId) {
   const cardArticle = document.querySelectorAll(".card");
-
-  console.log(cardArticle);
-  console.log("here");
 
   cardArticle.forEach((data) => {
     if (data.classList.contains(filterdId)) {
