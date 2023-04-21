@@ -2,10 +2,12 @@ const tags = document.querySelector(".tag");
 const imgs = document.querySelector(".image");
 //,로 구분
 
+const obj = {};
+
 //새로운 메뉴 이름 입력
 function menuInput() {
   const menus = document.querySelector("#menuInput").value;
-  localStorage.setItem("newMenu", menus);
+  obj["menu"] = menus;
 }
 const InputMenu = document.querySelector("#menuInput");
 InputMenu.addEventListener("change", menuInput);
@@ -14,16 +16,21 @@ InputMenu.addEventListener("change", menuInput);
 function tagInput() {
   const tags = document.querySelector("#tagInput").value;
   const tagsArray = tags.split(",");
-  console.log(tagsArray);
-  localStorage.setItem("newTag", tagsArray);
+  obj["tags"] = tagsArray;
 }
 const InputTags = document.querySelector("#tagInput");
 InputTags.addEventListener("change", tagInput);
 
+//입력값을 localStorage에 저장(이름, 태그만 저장합니당)
+function newMenuObj() {
+  console.log(obj);
+  localStorage.setItem("new", JSON.stringify(obj));
+  console.log(JSON.parse(localStorage.getItem("new")));
+}
+
+//사진 입력
 function imgInput() {
   const img = document.querySelector("#imgInput").files;
-  console.log(img);
-  localStorage.setItem("newImg", img);
 }
 const InputImg = document.querySelector("#imgInput");
 InputImg.addEventListener("change", imgInput);
@@ -55,10 +62,10 @@ const CategorySelect = document.querySelector("#selectCategory");
 CategorySelect.addEventListener("change", selectCategory);
 
 function saveIn() {
-  e.preventDefalut();
   menuInput();
   tagInput();
   imgInput();
+  newMenuObj();
   selectCategory();
 }
 
