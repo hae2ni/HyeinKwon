@@ -188,7 +188,7 @@ main {
   background-color: #fbffb9;
   display: flex;
   padding-top: 120px;
-  height: 100vh;
+  height: 100%;
 }
 
 .card_section {
