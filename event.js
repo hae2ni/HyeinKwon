@@ -182,3 +182,59 @@ function hiddenCard(filterdId) {
     }
   });
 }
+
+//데이터 받아오기
+function newLoad() {
+  const cardSection = document.querySelector(".card_section");
+  let cards = newCard();
+  cardSection.appendChild(cards);
+}
+
+function newCard() {
+  let newOne = JSON.parse(localStorage.getItem("new"));
+  const cardArticle = document.createElement("article");
+  cardArticle.classList.add("card");
+  cardArticle.classList.add("slideUp");
+
+  cardArticle.innerHTML = `
+    <h3>${newOne.menu}</h3>
+    `;
+  const hashtagWrapper = document.createElement("div");
+  hashtagWrapper.className = "hashtag_wrapper";
+  const hashtagContainer = document.createElement("ul");
+  hashtagContainer.className = "hashtag";
+  cardArticle.appendChild(hashtagWrapper);
+  hashtagWrapper.appendChild(hashtagContainer);
+
+  newOne.tags.forEach((tag) => {
+    const hashtag = document.createElement("li");
+    hashtag.className = "hashtag_item";
+
+    hashtagContainer.appendChild(hashtag);
+    hashtag.innerText = tag;
+  });
+
+  const hashtagMore = document.createElement("button");
+  hashtagMore.innerText = "+";
+  hashtagMore.classList.add("hashtag_btn");
+  hashtagWrapper.appendChild(hashtagMore);
+
+  const menuImg = document.createElement("img");
+  menuImg.classList.add("stuff");
+  menuImg.src = "./assets/sandwichsalmon.jpg";
+  menuImg.alt = newOne.menu;
+  cardArticle.appendChild(menuImg);
+
+  const mineBtn = document.createElement("img");
+  mineBtn.src = "./assets/heartbtn.png";
+  mineBtn.alt = "찜버튼";
+  mineBtn.classList.add("minebtn");
+  cardArticle.appendChild(mineBtn);
+  return cardArticle;
+}
+
+//화면 새로고침하면 실행
+window.onload = function () {
+  showCard("all");
+  newLoad();
+};
