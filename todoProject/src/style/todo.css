@@ -81,7 +81,7 @@ main {
   width: 25px;
   height: 25px;
   display: flex;
-  background-image: url("./assets/blackheart.png");
+  background-image: url("../assets/blackheart.png");
   background-size: 25px 25px;
   justify-content: center;
   align-items: center;
@@ -93,7 +93,7 @@ main {
   width: 25px;
   height: 25px;
   display: flex;
-  background-image: url("./assets/redheart.png");
+  background-image: url("../assets/redheart.png");
   background-size: 25px 25px;
   justify-content: center;
   align-items: center;

@@ -1,4 +1,4 @@
-import TODOs from "./todo.js";
+import TODOs from "./data.js";
 
 const todoWrapper = document.getElementById("wrapper");
 const todoContainer = document.getElementById("todoContainer");

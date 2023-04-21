@@ -1,4 +1,4 @@
-import TODOs from "./todo.js";
+import TODOs from "./data.js";
 
 const DONE_CLASSNAME = "done";
 let clickCategoryId;
