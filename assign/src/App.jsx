@@ -1,13 +1,14 @@
 import styled, { ThemeProvider } from "styled-components";
-import GlobalStyle from "./styles/GlobalStyle";
 import "./App.css";
-import meme from "./assets/meme.gif";
+import GlobalStyle from "./styles/GlobalStyle";
 import theme from "./styles/theme";
+import Main from "./components/Main";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <Main />
     </ThemeProvider>
   );
 }
