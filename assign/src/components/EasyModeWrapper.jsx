@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Card from "./Cards";
 import imageA from "../assets/image1.gif";
@@ -24,9 +24,15 @@ export default function EasyModeWrapper() {
     imageI,
   ];
 
+  const RandomImgList = [...IMG_LIST].sort(() => Math.random() - 0.5);
+  const randomImgs = RandomImgList.splice(0, 5);
+  const RandomImgList2 = [...randomImgs].sort(() => Math.random() - 0.5);
+
+  const RandomList = randomImgs.concat(RandomImgList2);
+
   return (
     <Container>
-      {IMG_LIST.map((image, index) => (
+      {RandomList.map((image, index) => (
         <Card sommung={image} key={index} alt={`image${index}`} />
       ))}
     </Container>
@@ -34,11 +40,7 @@ export default function EasyModeWrapper() {
 }
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 600px;
-
-  background-color: ${({ theme }) => theme.colors.yellow};
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
 `;

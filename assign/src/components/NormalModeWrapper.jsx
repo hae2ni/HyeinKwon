@@ -24,9 +24,14 @@ export default function NormalModeWrapper() {
     imageI,
   ];
 
+  const RandomImgList = [...IMG_LIST].sort(() => Math.random() - 0.5);
+  const randomImgs = RandomImgList.splice(0, 7);
+  const randomCards = [...randomImgs].sort(() => Math.random() - 0.5);
+
+  const CardArray = randomImgs.concat(randomCards);
   return (
     <Container>
-      {IMG_LIST.map((image, index) => (
+      {CardArray.map((image, index) => (
         <Card sommung={image} key={index} alt={`image${index}`} />
       ))}
     </Container>
@@ -34,11 +39,7 @@ export default function NormalModeWrapper() {
 }
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  height: 600px;
-
-  background-color: ${({ theme }) => theme.colors.pink};
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 `;
