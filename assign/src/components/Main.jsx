@@ -4,29 +4,34 @@ import styled from "styled-components";
 import Reset from "./Reset";
 import ChooseLevel from "./ChooseLevel";
 
-import EasyModeWrapper from "./EasyModeWrapper";
-import NormalModeWrapper from "./NormalModeWrapper";
-import HardModeWrapper from "./HardModeWrapper";
+import Card from "./Cards";
+import { EasyRandomList, NormalRandomList, HardRandomList } from "./ImgData";
 
 export default function Main() {
   const [score, setScore] = useState("5");
   const [checkScore, setCheckScore] = useState("0");
-  const [showCard, setShowCard] = useState(0);
+  const [RandomList, setRandomList] = useState(EasyRandomList);
+  const [selectCard, setSelectCard] = useState([]);
 
   const EasyMode = () => {
     setScore("5");
-    setShowCard(0);
+    setRandomList(EasyRandomList);
   };
 
   const NormalMode = () => {
     setScore("7");
-    setShowCard(1);
+    setRandomList(NormalRandomList);
   };
 
   const HardMode = () => {
     setScore("9");
-    setShowCard(2);
+    setRandomList(HardRandomList);
   };
+
+  const handleCardClick = (image) => {
+    setSelectCard([...selectCard, image]);
+  };
+
   return (
     <>
       <Header>
@@ -42,9 +47,16 @@ export default function Main() {
           <ChooseLevel onClickBtn={NormalMode} level={"Normal"}></ChooseLevel>
           <ChooseLevel onClickBtn={HardMode} level={"Hard"}></ChooseLevel>
         </LevelContainer>
-        {showCard === 0 && <EasyModeWrapper />}
-        {showCard === 1 && <NormalModeWrapper />}
-        {showCard === 2 && <HardModeWrapper />}
+        <CardWrapper>
+          {RandomList.map((image, index) => (
+            <Card
+              onCardClick={handleCardClick}
+              sommung={image}
+              key={index}
+              alt={`image${index}`}
+            />
+          ))}
+        </CardWrapper>
       </Container>
     </>
   );
@@ -94,4 +106,33 @@ const LevelContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const CardWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+`;
+
+const CardContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 200px;
+  height: 300px;
+  margin: 20px;
+
+  border: 5px solid ${({ theme }) => theme.colors.blue};
+  border-radius: 3%;
+  box-shadow: 3px 3px 2px ${({ theme }) => theme.colors.black};
+
+  background-color: ${({ theme }) => theme.colors.lightblue};
+`;
+
+const CardImg = styled.img`
+  width: 150px;
+  height: 200px;
+
+  border-radius: 3%;
 `;
