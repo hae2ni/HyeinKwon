@@ -8,10 +8,14 @@ import Card from "./Cards";
 import { EasyRandomList, NormalRandomList, HardRandomList } from "./ImgData";
 
 export default function Main() {
-  const [score, setScore] = useState("5");
-  const [checkScore, setCheckScore] = useState("0");
+  const [score, setScore] = useState(5);
+  const [checkScore, setCheckScore] = useState(0);
   const [RandomList, setRandomList] = useState(EasyRandomList);
+
+  const [isClickable, setIsClickable] = useState(true);
+
   const [selectCard, setSelectCard] = useState([]);
+  const [showCard, setShowCard] = useState(true);
 
   const EasyMode = () => {
     setScore("5");
@@ -29,7 +33,25 @@ export default function Main() {
   };
 
   const handleCardClick = (image) => {
+    //뒤집은 카드를 list에 저장
     setSelectCard([...selectCard, image]);
+
+    //두개 일때
+    if (selectCard.length === 1) {
+      setIsClickable(false);
+      if (selectCard[0] === image) {
+        setCheckScore((checkScore) => checkScore + 1);
+
+        setSelectCard([]);
+        setTimeout(() => {
+          setIsClickable(true);
+        }, 2000);
+      } else {
+        setSelectCard([]);
+        setIsClickable(true);
+        setShowCard(false);
+      }
+    }
   };
 
   return (
@@ -50,6 +72,8 @@ export default function Main() {
         <CardWrapper>
           {RandomList.map((image, index) => (
             <Card
+              showCard={showCard}
+              isClickable={isClickable}
               onCardClick={handleCardClick}
               sommung={image}
               key={index}

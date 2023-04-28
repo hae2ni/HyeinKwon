@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import preview from "../assets/preview.gif";
 
-export default function Card({ sommung }) {
+export default function Card({ sommung, onCardClick, isClickable, showCard }) {
   const [showImage, setShowImage] = useState(false);
 
-  const handleShowImage = () => {
-    setShowImage(!showImage);
+  const handleClick = (e) => {
+    if (isClickable) {
+      onCardClick(sommung);
+      setShowImage(true);
+    }
   };
+
   return (
-    <CardContainer onClick={handleShowImage}>
-      {showImage ? <CardImg src={sommung} /> : <CardImg src={preview} />}
+    <CardContainer onClick={handleClick}>
+      {showCard !== showImage ? (
+        <CardImg src={sommung} />
+      ) : (
+        <CardImg src={preview} />
+      )}
     </CardContainer>
   );
 }
