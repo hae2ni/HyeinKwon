@@ -19,16 +19,19 @@ export default function Main() {
 
   const EasyMode = () => {
     setScore("5");
+    setCheckScore(0);
     setRandomList(EasyRandomList);
   };
 
   const NormalMode = () => {
     setScore("7");
+    setCheckScore(0);
     setRandomList(NormalRandomList);
   };
 
   const HardMode = () => {
     setScore("9");
+    setCheckScore(0);
     setRandomList(HardRandomList);
   };
 
