@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import preview from "../assets/preview.gif";
+import "./Cards.css";
 
-export default function Card({ sommung, onCardClick, isClickable, showCard }) {
-  const [showImage, setShowImage] = useState(false);
-
-  const handleClick = (e) => {
-    if (isClickable) {
-      onCardClick(sommung);
-      setShowImage(true);
-    }
+export default function Card({ image, handleChoice, flipped }) {
+  const handleClick = () => {
+    handleChoice(image);
   };
-
   return (
-    <CardContainer onClick={handleClick}>
-      {showCard !== showImage ? (
-        <CardImg src={sommung} />
-      ) : (
-        <CardImg src={preview} />
-      )}
+    <CardContainer>
+      <div className={flipped ? "flipped" : ""}>
+        <CardImg className="front" src={image.card} />
+        <CardImg
+          onClick={handleClick}
+          className="back"
+          src={preview}
+          alt="카드 커버"
+        />
+      </div>
     </CardContainer>
   );
 }
