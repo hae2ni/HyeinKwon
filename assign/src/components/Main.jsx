@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Reset from "./Reset";
@@ -10,13 +10,12 @@ import { EasyRandomList, NormalRandomList, HardRandomList } from "./ImgData";
 export default function Main() {
   const [score, setScore] = useState(5);
   const [checkScore, setCheckScore] = useState(0);
-  const [RandomList, setRandomList] = useState(EasyRandomList);
+  const [randomList, setRandomList] = useState(EasyRandomList);
+  const [turns, setTurns] = useState(0);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choicetwo, setChoiceTwo] = useState(null);
 
-  const [isClickable, setIsClickable] = useState(true);
-
-  const [selectCard, setSelectCard] = useState([]);
-  const [showCard, setShowCard] = useState(true);
-
+  //각 모드 선택 시, 카드 정렬(개수에 맞게) + 난이도 설정
   const EasyMode = () => {
     setScore("5");
     setCheckScore(0);
@@ -35,28 +34,42 @@ export default function Main() {
     setRandomList(HardRandomList);
   };
 
-  const handleCardClick = (image) => {
-    //뒤집은 카드를 list에 저장
-    setSelectCard([...selectCard, image]);
-
-    //두개 일때
-    if (selectCard.length === 1) {
-      setIsClickable(false);
-      if (selectCard[0] === image) {
-        setCheckScore((checkScore) => checkScore + 1);
-
-        setSelectCard([]);
-        setTimeout(() => {
-          setIsClickable(true);
-        }, 2000);
-      } else {
-        setSelectCard([]);
-        setIsClickable(true);
-        setShowCard(false);
-      }
-    }
+  const handleChoice = (image) => {
+    choiceOne ? setChoiceTwo(image) : setChoiceOne(image);
+    console.log(image);
   };
 
+  //두개 카드 비교하기
+  useEffect(() => {
+    if (choiceOne && choicetwo) {
+      if (choiceOne.card === choicetwo.card) {
+        console.log("맞다");
+        setCheckScore((checkScore) => checkScore + 1);
+        setRandomList((prevRandomList) => {
+          return prevRandomList.map((image) => {
+            if (image.card == choiceOne.card) {
+              return { ...image, matched: true };
+            } else {
+              return image;
+            }
+          });
+        });
+        resetTurn();
+      } else {
+        console.log("틀림");
+        setTimeout(() => resetTurn(), 2000);
+      }
+    }
+  }, [choiceOne, choicetwo]);
+
+  console.log(randomList);
+
+  //고른 카드 reset하기
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((turns) => turns + 1);
+  };
   return (
     <>
       <Header>
@@ -73,14 +86,14 @@ export default function Main() {
           <ChooseLevel onClickBtn={HardMode} level={"Hard"}></ChooseLevel>
         </LevelContainer>
         <CardWrapper>
-          {RandomList.map((image, index) => (
+          {randomList.map((image) => (
             <Card
-              showCard={showCard}
-              isClickable={isClickable}
-              onCardClick={handleCardClick}
-              sommung={image}
-              key={index}
-              alt={`image${index}`}
+              key={image.id}
+              image={image}
+              handleChoice={handleChoice}
+              flipped={
+                image === choiceOne || image === choicetwo || image.matched
+              }
             />
           ))}
         </CardWrapper>
@@ -137,29 +150,6 @@ const LevelContainer = styled.div`
 
 const CardWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-`;
-
-const CardContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 200px;
-  height: 300px;
-  margin: 20px;
-
-  border: 5px solid ${({ theme }) => theme.colors.blue};
-  border-radius: 3%;
-  box-shadow: 3px 3px 2px ${({ theme }) => theme.colors.black};
-
-  background-color: ${({ theme }) => theme.colors.lightblue};
-`;
-
-const CardImg = styled.img`
-  width: 150px;
-  height: 200px;
-
-  border-radius: 3%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
 `;
