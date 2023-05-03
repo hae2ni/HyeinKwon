@@ -14,6 +14,7 @@ export default function Main() {
   const [turns, setTurns] = useState(0);
   const [choiceOne, setChoiceOne] = useState(null);
   const [choicetwo, setChoiceTwo] = useState(null);
+  const [isClicked, setIsCliked] = useState(false);
 
   //각 모드 선택 시, 카드 정렬(개수에 맞게) + 난이도 설정
   const EasyMode = () => {
@@ -42,6 +43,8 @@ export default function Main() {
   //두개 카드 비교하기
   useEffect(() => {
     if (choiceOne && choicetwo) {
+      setIsCliked(true);
+
       if (choiceOne.card === choicetwo.card) {
         console.log("맞다");
         setCheckScore((checkScore) => checkScore + 1);
@@ -69,7 +72,9 @@ export default function Main() {
     setChoiceOne(null);
     setChoiceTwo(null);
     setTurns((turns) => turns + 1);
+    setIsCliked(false);
   };
+
   return (
     <>
       <Header>
@@ -94,6 +99,7 @@ export default function Main() {
               flipped={
                 image === choiceOne || image === choicetwo || image.matched
               }
+              isClicked={isClicked}
             />
           ))}
         </CardWrapper>

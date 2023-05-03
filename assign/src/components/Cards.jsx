@@ -3,9 +3,11 @@ import styled, { css } from "styled-components";
 import preview from "../assets/preview.gif";
 import "./Cards.css";
 
-export default function Card({ image, handleChoice, flipped }) {
+export default function Card({ image, handleChoice, flipped, isClicked }) {
   const handleClick = () => {
-    handleChoice(image);
+    if (!isClicked) {
+      handleChoice(image);
+    }
   };
   return (
     <CardContainer>
