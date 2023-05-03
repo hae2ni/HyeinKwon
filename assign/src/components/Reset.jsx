@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Reset() {
+export default function Reset({ handleReset }) {
   const handleResetBtn = () => {
-    window.location.reload();
+    handleReset();
   };
   return <Container onClick={handleResetBtn}>RESET</Container>;
 }
