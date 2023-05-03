@@ -48,6 +48,8 @@ export const LevelContainer = styled.section`
 `;
 
 export const CardWrapper = styled.article`
+  z-index: 1;
+
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
@@ -59,7 +61,6 @@ export const CardWrapper = styled.article`
 `;
 
 // Card.jsx 부분
-
 export const CardContainer = styled.div`
   display: flex;
   justify-content: center;
