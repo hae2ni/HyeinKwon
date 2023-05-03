@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Header,
   Score,
@@ -13,6 +13,9 @@ import ChooseLevel from "./ChooseLevel";
 import Card from "./Cards";
 import { EasyRandomList, NormalRandomList, HardRandomList } from "./ImgData";
 
+import "../styles/neon.css";
+import useDidMountEffect from "./useDidMountEffect";
+
 export default function Main() {
   const [score, setScore] = useState(5);
   const [checkScore, setCheckScore] = useState(0);
@@ -21,6 +24,13 @@ export default function Main() {
   const [selectFirst, setSelectFirst] = useState(null);
   const [selectSecond, setSelectSecond] = useState(null);
   const [isClicked, setIsCliked] = useState(false);
+
+  const scoreRef = useRef();
+
+  useDidMountEffect(() => {
+    scoreRef.current.classList.add("neon");
+    setTimeout(() => scoreRef.current.classList.remove("neon"), 1000);
+  }, [checkScore]);
 
   //각 모드 선택 시, 카드 정렬(개수에 맞게) + 난이도 설정
   const EasyMode = () => {
@@ -86,14 +96,15 @@ export default function Main() {
       prevRandomList.map((image) => ({ ...image, matched: false }))
     );
   };
+
   return (
     <>
       <Header>
         💖작고 소즁한 솜뭉찍을 찾아라!💖
-        <Score>
+        <Score ref={scoreRef}>
           {checkScore} : {score}
-          <Reset handleReset={handleReset} />
         </Score>
+        <Reset handleReset={handleReset} />
       </Header>
       <Container>
         <LevelContainer>
