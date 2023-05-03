@@ -29,7 +29,7 @@ export const Score = styled.div`
   font-size: 50px;
 `;
 
-export const Container = styled.div`
+export const Container = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,21 +41,26 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.yellow};
 `;
 
-export const LevelContainer = styled.div`
+export const LevelContainer = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-export const CardWrapper = styled.div`
+export const CardWrapper = styled.article`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+
+  @media all and (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+  }
 `;
 
 // Card.jsx 부분
 
-export const CardContainer = styled.article`
+export const CardContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
